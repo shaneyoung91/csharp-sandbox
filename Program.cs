@@ -17,21 +17,22 @@
 // Console.WriteLine($"Third roll: {roll3}");
 //     // Specifies both min and max values, returns values from 50 - 100
 
-
+/*
 // -------------- CODE CHALLENGE --------------
 // Implement a method of the Math class that returns the larger of two numbers
 // Use the method that you found to assign a value to the variable named largerValue.
 // You should be able to pass the two integer values, firstValue and secondValue, to the method that you found.
-    // The method should return a value of type int that represents the larger of the two arguments that you passed it.
+// The method should return a value of type int that represents the larger of the two arguments that you passed it.
 // You can assign the return value to largerValue on a new code line or on the existing code line that's used to declare largerValue.
 
 int firstValue = 500;
 int secondValue = 600;
 int largerValue = Math.Max(firstValue, secondValue);
 Console.WriteLine(largerValue);
-// --------------------------------------------
+// -------------------------------------------- */
 
 
+/*
 // ------- Using if, else if, else, statements -------
 Random dice = new Random();
 
@@ -65,10 +66,11 @@ else if (total == 7) {
 } else {
     Console.WriteLine("You win a kitten!");
 }
-// ----------------------------------------------
+// ---------------------------------------------- */
 
 
-// ----------------CODE CHALLENGE----------------
+/*
+// ----------------CODE CHALLENGE---------------- 
 // Improve renewal rate of subscriptions.
 // You've been asked to add a feature to your company's software. The feature is intended to improve the renewal rate of subscriptions to the software. 
     // Your task is to display a renewal message when a user logs into the software system and is notified their subscription will soon end. 
@@ -129,5 +131,102 @@ if (daysUntilExpiration == 0) {
 if (discountPercentage > 0) {
     Console.WriteLine($"Renew now and save {discountPercentage}%!");
 }
+// ----------------------------------------- */
 
-// -----------------------------------------
+
+// ----------- Arrays --------------
+
+/*
+// Declare a new array of strings
+string[] fraudulentOrderIDs = new string[3];
+
+// Assign values to elements of an array
+fraudulentOrderIDs[0] = "A123";
+fraudulentOrderIDs[1] = "B456";
+fraudulentOrderIDs[2] = "C789";
+// fraudulentOrderIDs[3] = "D000";
+*/
+
+/*
+// Initialize an array
+string[] fraudulentOrderIDs = { "A123", "B456", "C789" };
+
+// Retrieve values from elements of an array
+Console.WriteLine($"First: {fraudulentOrderIDs[0]}");
+Console.WriteLine($"Second: {fraudulentOrderIDs[1]}");
+Console.WriteLine($"Third: {fraudulentOrderIDs[2]}");
+
+// Reassign value of an array
+fraudulentOrderIDs[0] = "F000";
+Console.WriteLine($"Reassign First: {fraudulentOrderIDs[0]}");
+
+// Use the Length property of an array
+Console.WriteLine($"There are {fraudulentOrderIDs.Length} fraudulent orders to process.");
+*/
+
+/*
+// Implement the forEach statement
+int[] inventory = { 200, 450, 700, 175, 250 };
+int sum = 0;
+int bin = 0;
+
+foreach (int items in inventory) {
+    sum += items;
+    bin++;
+    Console.WriteLine($"Bin {bin} = {items} items (Running Total: {sum})");
+}
+
+Console.WriteLine($"We have {sum} items in inventory.");
+*/
+
+// ------------ CODE CHALLENGE --------------
+/* Report the Order IDs that need further investigation
+    Your team has found a pattern. Orders that start with the letter "B" encounter fraud at a rate 25 times greater than the normal rate. 
+    You write new code that outputs the Order ID of new orders where the Order ID starts with the letter "B". 
+    This will be used by the fraud team to investigate further.
+
+1. Declare an array and initialize it to contain the following elements:
+
+        B123
+        C234
+        A345
+        C15
+        B177
+        G3003
+        C235
+        B179
+
+These values represent the fraudulent Order ID data that your application use.
+
+2. Create a foreach statement to iterate through each element of your array.
+
+3. Report the Order IDs that start with the letter "B".
+    You need to evaluate each element of the array. Report the potentially fraudulent Order IDs by detecting the orders that start with the letter "B". 
+    To determine whether or not an element starts with the letter "B", use the String.StartsWith() method. 
+    Here's a simple example of how to use the String.StartsWith() method that you can adapt for your code:
+
+        string name = "Bob";
+        if (name.StartsWith("B")) {
+            Console.WriteLine("The name starts with 'B'!");
+        }
+
+    Your output should match the following:
+
+        B123
+        B177
+        B179
+
+Here's a hint: As you loop through each element in your array, you'll need an if statement. 
+The if statement will need to use a method on the string class to determine if a string starts with a specific letter. 
+If you're not sure how to use an if statement, please see the module "Add decision logic to your code using the if-elseif-else statement in C#".
+*/
+
+/*
+string[] fraudulentOrderIDs = { "B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"};
+
+foreach (string order in fraudulentOrderIDs) {
+    if (order.StartsWith("B")) {
+        Console.WriteLine(order);
+    }
+}
+// --------------------------------------------- */
