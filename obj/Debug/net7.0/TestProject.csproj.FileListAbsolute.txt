@@ -1,0 +1,14 @@
+/Users/shaneyoung/code/CsharpProjects/TestProject/bin/Debug/net7.0/TestProject
+/Users/shaneyoung/code/CsharpProjects/TestProject/bin/Debug/net7.0/TestProject.deps.json
+/Users/shaneyoung/code/CsharpProjects/TestProject/bin/Debug/net7.0/TestProject.runtimeconfig.json
+/Users/shaneyoung/code/CsharpProjects/TestProject/bin/Debug/net7.0/TestProject.dll
+/Users/shaneyoung/code/CsharpProjects/TestProject/bin/Debug/net7.0/TestProject.pdb
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/TestProject.GeneratedMSBuildEditorConfig.editorconfig
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/TestProject.AssemblyInfoInputs.cache
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/TestProject.AssemblyInfo.cs
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/TestProject.csproj.CoreCompileInputs.cache
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/TestProject.dll
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/refint/TestProject.dll
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/TestProject.pdb
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/TestProject.genruntimeconfig.cache
+/Users/shaneyoung/code/CsharpProjects/TestProject/obj/Debug/net7.0/ref/TestProject.dll
