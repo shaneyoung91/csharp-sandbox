@@ -281,3 +281,109 @@ Console.WriteLine($"'o' appears {count} times.");
 // ----------------------------------
 
 
+/* -------- Evaluating Expressions ------------- */
+
+// --------- Equality ----------
+// string value1 = " a";
+// string value2 = "A ";
+// Console.WriteLine(value1.Trim().ToLower() == value2.Trim().ToLower());
+
+// --------- Inequality ---------
+// Console.WriteLine("a" != "a");
+// Console.WriteLine("a" != "A");
+// Console.WriteLine(1 != 2);
+
+// string myValue = "a";
+// Console.WriteLine(myValue != "a");
+
+
+// --------- Comparison -----------
+// Console.WriteLine(1 > 2);
+// Console.WriteLine(1 < 2);
+// Console.WriteLine(1 >= 1);
+// Console.WriteLine(1 <= 1);
+
+
+// --------- Boolean ----------
+// string pangram = "The quick brown fox jumps over the lazy dog.";
+// Console.WriteLine(pangram.Contains("fox"));
+// Console.WriteLine(pangram.Contains("cow"));
+
+
+// --------- Logical Negation -----------
+// string pangram = "The quick brown fox jumps over the lazy dog.";
+// Console.WriteLine(!pangram.Contains("fox"));
+// Console.WriteLine(!pangram.Contains("cow"));
+
+
+// --------- Conditional Operator ---------
+// int saleAmount = 1001;
+// int discount = saleAmount > 1000 ? 100 : 50;
+// Console.WriteLine($"Discount: {discount}");
+
+
+// ------------------ CODE CHALLENGE -----------------------
+// Write code to display the result of a coin flip. The resulting decision logic will display either heads or tails.
+// Use the Random class to generate a value.
+// Based on the value generated, use the conditional operator to display either heads or tails
+// Your code should be easy to read, but with as few lines as possible.
+
+/*
+    Random coin = new Random();
+    int flip = coin.Next(2);
+    string result = flip == 0 ? "Heads" : "Tails";
+    Console.WriteLine($"Result of Coin Flip: {result}");
+*/
+
+
+// ------------------ CODE CHALLENGE -----------------------
+// Implement decision logic based on a series of business rules.
+// You will need to use the Contains() helper method to determine whether the value assigned to the permission string contains 
+    // one of the permission values specified by the "business rules". For example, the expression permission.Contains("Admin") 
+    // will return true when using the initial data values specified in the code above.
+
+/* --------  BUSINESS RULES THAT YOUR SOLUTION MUST SATISFY ---------
+If the user is an Admin with a level greater than 55, output the message:
+    Welcome, Super Admin user.
+If the user is an Admin with a level less than or equal to 55, output the message:
+    Welcome, Admin user.
+If the user is a Manager with a level 20 or greater, output the message:
+    Contact an Admin for access.
+If the user is a Manager with a level less than 20, output the message:
+    You do not have sufficient privileges.
+If the user is not an Admin or a Manager, output the message:
+    You do not have sufficient privileges.
+ --------------------------------------------------------------------- */
+
+/*
+string permission = "Admin|Manager";
+int level = 55;
+
+if (permission.Contains("Admin"))
+{
+    if (level > 55)
+    {
+        Console.WriteLine("Welcome, Super Admin user.");
+    }
+    else
+    {
+        Console.WriteLine("Welcome, Admin user.");
+    }
+}
+else if (permission.Contains("Manager"))
+{
+    if (level >= 20)
+    {
+        Console.WriteLine("Contact an Admin for access.");
+    }
+    else
+    {
+        Console.WriteLine("You do not have sufficient privileges.");
+    }
+}
+else
+{
+    Console.WriteLine("You do not have sufficient privileges.");
+}
+*/
+
