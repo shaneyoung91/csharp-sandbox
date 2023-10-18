@@ -339,8 +339,8 @@ Console.WriteLine($"'o' appears {count} times.");
 // ------------------ CODE CHALLENGE -----------------------
 // Implement decision logic based on a series of business rules.
 // You will need to use the Contains() helper method to determine whether the value assigned to the permission string contains 
-    // one of the permission values specified by the "business rules". For example, the expression permission.Contains("Admin") 
-    // will return true when using the initial data values specified in the code above.
+// one of the permission values specified by the "business rules". For example, the expression permission.Contains("Admin") 
+// will return true when using the initial data values specified in the code above.
 
 /* --------  BUSINESS RULES THAT YOUR SOLUTION MUST SATISFY ---------
     If the user is an Admin with a level greater than 55, output the message:
@@ -465,7 +465,7 @@ Console.WriteLine($"Total: {total}");
 // A switch statement is C# selection statement that provides an alternative to an if-elseif-else branching construct.
 // The switch statement provides advantages over an if-elseif-else construct when evaluating a single value against a list of known matching values.
 // The switch statement chooses one section of code to execute from a list of possible switch sections.
-    // The selected switch sections is chosen based on a pattern match with the statement's match expression.
+// The selected switch sections is chosen based on a pattern match with the statement's match expression.
 
 /* Example
     switch (fruit)
@@ -625,4 +625,55 @@ Console.WriteLine($"Product: {size} {color} {type}");
     }
 
     Console.WriteLine($"Product: {size} {color} {type}");
+*/
+
+
+/* -------- LESSON: FOR LOOPS ------------- */
+
+// Loop through each element of an array (backwards)
+    // string[] names = {"Alex", "Eddie", "David", "Michael"};
+    // for (int i = names.Length - 1; i >= 0; i--)
+    // {
+    //     Console.WriteLine(names[i]);
+    // }
+
+// Limitations of foreach statement
+    // string[] names = {"Alex", "Eddie", "David", "Michael"};
+    // foreach (var name in names)
+    // {
+    //     // Can't do this:
+    //     if (name == "David") name = "Sammy";
+    // }
+
+// Overcoming limitation of foreach using the for statement
+    // string[] names = { "Alex", "Eddie", "David", "Michael" };
+    // for (int i = 0; i < names.Length; i++)
+    //     if (names[i] == "David")
+    //         names[i] = "Sammy";
+
+    // foreach (var name in names)
+    //     Console.WriteLine(name);
+
+// ------------------ CODE CHALLENGE -----------------------
+// FizzBuzz challenge
+/*
+    Output values from 1 to 100, one number per line, inside the code block of an iteration statement.
+    When the current value is divisible by 3, print the term Fizz next to the number.
+    When the current value is divisible by 5, print the term Buzz next to the number.
+    When the current value is divisible by both 3 and 5, print the term FizzBuzz next to the number
+*/
+
+// ----------------- SOLUTION ------------------
+/*
+    for (int i = 1; i < 101; i++)
+    {
+        if (i % 3 == 0 && i % 5 == 0)
+            Console.WriteLine($"{i} - FizzBuzz");
+        else if (i % 3 == 0)
+            Console.WriteLine($"{i} - Fizz");
+        else if (i % 5 == 0)
+            Console.WriteLine($"{i} - Buzz");
+        else
+            Console.WriteLine(i);
+    }
 */
