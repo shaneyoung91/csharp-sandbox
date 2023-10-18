@@ -631,28 +631,28 @@ Console.WriteLine($"Product: {size} {color} {type}");
 /* -------- LESSON: FOR LOOPS ------------- */
 
 // Loop through each element of an array (backwards)
-    // string[] names = {"Alex", "Eddie", "David", "Michael"};
-    // for (int i = names.Length - 1; i >= 0; i--)
-    // {
-    //     Console.WriteLine(names[i]);
-    // }
+// string[] names = {"Alex", "Eddie", "David", "Michael"};
+// for (int i = names.Length - 1; i >= 0; i--)
+// {
+//     Console.WriteLine(names[i]);
+// }
 
 // Limitations of foreach statement
-    // string[] names = {"Alex", "Eddie", "David", "Michael"};
-    // foreach (var name in names)
-    // {
-    //     // Can't do this:
-    //     if (name == "David") name = "Sammy";
-    // }
+// string[] names = {"Alex", "Eddie", "David", "Michael"};
+// foreach (var name in names)
+// {
+//     // Can't do this:
+//     if (name == "David") name = "Sammy";
+// }
 
 // Overcoming limitation of foreach using the for statement
-    // string[] names = { "Alex", "Eddie", "David", "Michael" };
-    // for (int i = 0; i < names.Length; i++)
-    //     if (names[i] == "David")
-    //         names[i] = "Sammy";
+// string[] names = { "Alex", "Eddie", "David", "Michael" };
+// for (int i = 0; i < names.Length; i++)
+//     if (names[i] == "David")
+//         names[i] = "Sammy";
 
-    // foreach (var name in names)
-    //     Console.WriteLine(name);
+// foreach (var name in names)
+//     Console.WriteLine(name);
 
 // ------------------ CODE CHALLENGE -----------------------
 // FizzBuzz challenge
@@ -675,5 +675,285 @@ Console.WriteLine($"Product: {size} {color} {type}");
             Console.WriteLine($"{i} - Buzz");
         else
             Console.WriteLine(i);
+    }
+*/
+
+
+/* ------------- LESSON: DO-WHILE AND WHILE LOOPS ------------- */
+/*  The do-while statement executes a statement or a block of statements while a specified Boolean expression evaluates to true.
+    Because that expression is evaluated after each execution of the loop, a do-while loop executes one of more times.
+
+        do
+        {
+            // This codes executes at least one time
+        } while (true)
+    
+    The flow of execution starts inside the curly brackets. The code executes at least one time, then the Boolean expression next to the while keyword
+    is evaluated. If the Boolean expression returns true, the code block is executed again. By hard coding the Boolean expression to true, we've created an infinite loop.
+*/
+
+// Write a do-while statement to break when a certain random number is generated
+// Random random = new Random();
+// int current = 0;
+
+// do
+// {
+//     current = random.Next(1, 11);
+//     Console.WriteLine(current);
+// } while (current != 7);
+
+// Write a while statement that iterates only while a random number is greater than some value
+// Random random = new Random();
+// int current = random.Next(1, 11);
+
+// while (current >= 3)
+// {
+//     Console.WriteLine(current);
+//     current = random.Next(1, 11);
+// }
+// Console.WriteLine($"Last number: {current}");
+
+// Use the continue statement to step directly to the Boolean expression
+// The continue statement transfers execution to the end of the current iteration.
+// Random random = new Random();
+// int current = random.Next(1, 11);
+
+// do
+// {
+//     current = random.Next(1, 11);
+//     if (current >= 8) continue;
+//     Console.WriteLine(current);
+// } while (current != 7);
+
+// ------------------ CODE CHALLENGE -----------------------
+// Role playing game battle challenge
+/*  Rules to implement in your code:
+        You must use either the do-while statement or the while statement as an outer game loop.
+        The hero and the monster will start with 10 health points.
+        All attacks will be a value between 1 and 10.
+        The hero will attack first.
+        Print the amount of health the monster lost and their remaining health.
+        If the monster's health is greater than 0, it can attack the hero.
+        Print the amount of health the hero lost and their remaining health.
+        Continue this sequence of attacking until either the monster's health or hero's health is zero or less.
+        Print the winner.
+*/
+
+/* Code solution should produce a similar output:
+        Monster was damaged and lost 1 health and now has 9 health.
+        Hero was damaged and lost 1 health and now has 9 health.
+        Monster was damaged and lost 7 health and now has 2 health.
+        Hero was damaged and lost 6 health and now has 3 health.
+        Monster was damaged and lost 9 health and now has -7 health.
+        Hero wins!
+*/
+
+/*  ------------- SOLUTION --------------
+    Random attack = new Random();
+    int heroHealth = 10;
+    int monsterHealth = 10;
+
+    do
+    {
+        int roll = attack.Next(1, 11);
+        monsterHealth -= roll;
+        Console.WriteLine($"Monster was damaged and lost {roll} health and now has {monsterHealth} health.");
+
+        if (monsterHealth <= 0) continue;
+
+        roll = attack.Next(1, 11);
+        heroHealth -= roll;
+        Console.WriteLine($"Hero was damaged and lost {roll} health and now has {heroHealth} health.");
+
+    } while (monsterHealth > 0 && heroHealth > 0);
+
+    Console.WriteLine(heroHealth > monsterHealth ? "Hero wins!": "Monster wins!");
+*/
+
+
+// ------------------ CODE CHALLENGE (1 of 3) -----------------------
+// Write code that validates integer input
+/*
+    Your solution must include either a do-while or while iteration.
+    Before the iteration block: your solution must use a Console.WriteLine() statement to prompt the user for an integer value between 5 and 10.
+    Inside the iteration block:
+        Your solution must use a Console.ReadLine() statement to obtain input from the user.
+        Your solution must ensure that the input is a valid representation of an integer.
+        If the integer value isn't between 5 and 10, your code must use a Console.WriteLine() statement to prompt the user for an integer value between 5 and 10.
+        Your solution must ensure that the integer value is between 5 and 10 before exiting the iteration.
+    Below (after) the iteration code block: your solution must use a Console.WriteLine() statement to inform the user that their input value has been accepted.
+*/
+
+/* Code solution should produce a similar output:
+    Enter an integer value between 5 and 10
+        two
+    Sorry, you entered an invalid number, please try again
+        2
+    You entered 2. Please enter a number between 5 and 10.
+        7
+    Your input value (7) has been accepted.
+*/
+
+/* ---------- SOLUTION (1 of 3) -------------
+    string? readResult;
+    bool validEntry = false;
+    int numericValue = 0;
+    bool validNumber = false;
+    Console.WriteLine("Enter an integer value between 5 and 10");
+    do
+    {
+        readResult = Console.ReadLine();
+        validNumber = int.TryParse(readResult, out numericValue);
+
+        if (validNumber == false)
+        {
+            Console.WriteLine("Sorry, you entered an invalid number, please try again.");
+        }
+        
+        if (numericValue < 5 || numericValue > 10)
+        {
+            Console.WriteLine($"You entered {readResult}. Please enter a number between 5 and 10.");
+        } else if (numericValue >= 5 && numericValue <= 10)
+        {
+            validEntry = true;
+            Console.WriteLine($"Your input value ({readResult}) has been accepted.");
+            break;
+        } 
+
+    } while (validEntry == false);
+*/
+
+
+// ------------------ CODE CHALLENGE (2 of 3) -----------------------
+// Write code that validates string input
+/*
+    Your solution must include either a do-while or while iteration.
+    Before the iteration block: your solution must use a Console.WriteLine() statement to prompt the user for one of three role names: Administrator, Manager, or User
+    Inside the iteration block:
+        Your solution must use a Console.ReadLine() statement to obtain input from the user.
+        Your solution must ensure that the value entered matches one of the three role options.
+        Your solution should use the Trim() method on the input value to ignore leading and training space characters.
+        Your solution should use the ToLower() method on the input value to ignore case.
+        If the value entered isn't a match for one of the role options, your code must use a Console.WriteLine() statement to prompt the user for a valid entry.
+    Below (after) the iteration code block: Your solution must use a Console.WriteLine() statement to inform the user that their input value has been accepted.
+*/
+
+/* Code solution should produce a similar output:
+    Enter your role name (Administrator, Manager, or User)
+        Admin
+    The role name that you entered, "Admin" is not valid. Enter your role name (Administrator, Manager, or User)
+        Administrator
+    Your input value (Administrator) has been accepted.
+*/
+
+/* ---------- SOLUTION (2 of 3) -------------
+    string? readResult;
+    bool validEntry = false;
+    string userEntry = "";
+    Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+
+    do
+    {
+        readResult = Console.ReadLine();
+        if (readResult != null)
+        {
+            userEntry = readResult.Trim().ToLower();
+
+            if (userEntry == "administrator" || userEntry == "manager" || userEntry == "user")
+            {
+                Console.WriteLine($"Your input value ({userEntry}) has been accepted.");
+                validEntry = true;
+            } else
+                Console.WriteLine($"The role that you entered, '{userEntry}' is not valid. Enter your role name (Administrator, Manager, or User)");
+        }
+    } while (validEntry == false);
+*/
+
+
+// ------------------ CODE CHALLENGE (3 of 3) -----------------------
+// Write code that process the contents of a string array
+/*
+    Your solution must use the following string array to represent the input to your coding logic:
+        string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+    Your solution must declare an integer variable named periodLocation that can be used to hold the location of the period character within a string.
+    Your solution must include an outer foreach or for loop that can be used to process each string element in the array. 
+        The string variable that you'll process inside the loops should be named myString.
+    In the outer loop, your solution must use the IndexOf() method of the String class to get the location of the first period character in the myString variable.
+        The method call should be similar to: myString.IndexOf("."). If there's no period character in the string, a value of -1 will be returned.
+    Your solution must include an inner do-while or while loop that can be used to process the myString variable.
+    In the inner loop, your solution must extract and display (write to the console) each sentence that is contained in each of the strings that are processed.
+    In the inner loop, your solution must not display the period character.
+    In the inner loop, your solution must use the Remove(), Substring(), and TrimStart() methods to process the string information.
+*/
+
+/* Code solution should produce a similar output:
+    I like pizza
+    I like roast chicken
+    I like salad
+    I like all three of the menu choices
+*/
+
+// ---------- SOLUTION (3 of 3) -----------------
+/*
+    string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+
+    int periodLocation;
+
+    foreach (string myString in myStrings)
+    {    
+        periodLocation = myString.IndexOf(".");
+
+        if (periodLocation != -1)
+        {
+            string string1 = myString.Remove(periodLocation);
+            Console.WriteLine(string1);
+
+            string string2 = myString.Substring(periodLocation + 2);
+            periodLocation = string2.IndexOf(".");
+            Console.WriteLine(string2.Remove(periodLocation));
+            
+            string string3 = string2.Substring(periodLocation + 2);
+            Console.WriteLine(string3);
+        } else
+        {
+            Console.WriteLine(myString);
+        }
+    }
+*/
+
+/*  CORRECT SOLUTION
+    string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+    int stringsCount = myStrings.Length;
+
+    string myString = "";
+    int periodLocation = 0;
+
+    for (int i = 0; i < stringsCount; i++)
+    {
+        myString = myStrings[i];
+        periodLocation = myString.IndexOf(".");
+
+        string mySentence;
+
+        // extract sentences from each string and display them one at a time
+        while (periodLocation != -1)
+        {
+            // first sentence is the string value to the left of the period location
+            mySentence = myString.Remove(periodLocation);
+
+            // the remainder of myString is the string value to the right of the location
+            myString = myString.Substring(periodLocation + 1);
+
+            // remove any leading white-space from myString
+            myString = myString.TrimStart();
+
+            // update the comma location and increment the counter
+            periodLocation = myString.IndexOf(".");
+
+            Console.WriteLine(mySentence);
+        }
+
+        mySentence = myString.Trim();
+        Console.WriteLine(mySentence);
     }
 */
