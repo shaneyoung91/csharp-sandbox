@@ -33,7 +33,7 @@ Console.WriteLine(largerValue);
 
 
 /*
-// ------- Using if, else if, else, statements -------
+// ------- LESSON: Using if, else if, else, statements -------
 Random dice = new Random();
 
 int roll1 = dice.Next(1, 7);
@@ -134,7 +134,7 @@ if (discountPercentage > 0) {
 // ----------------------------------------- */
 
 
-// ----------- Arrays --------------
+// ----------- LESSON: Arrays --------------
 
 /*
 // Declare a new array of strings
@@ -281,7 +281,7 @@ Console.WriteLine($"'o' appears {count} times.");
 // ----------------------------------
 
 
-/* -------- Evaluating Expressions ------------- */
+/* -------- LESSON: Evaluating Expressions ------------- */
 
 // --------- Equality ----------
 // string value1 = " a";
@@ -343,19 +343,19 @@ Console.WriteLine($"'o' appears {count} times.");
     // will return true when using the initial data values specified in the code above.
 
 /* --------  BUSINESS RULES THAT YOUR SOLUTION MUST SATISFY ---------
-If the user is an Admin with a level greater than 55, output the message:
-    Welcome, Super Admin user.
-If the user is an Admin with a level less than or equal to 55, output the message:
-    Welcome, Admin user.
-If the user is a Manager with a level 20 or greater, output the message:
-    Contact an Admin for access.
-If the user is a Manager with a level less than 20, output the message:
-    You do not have sufficient privileges.
-If the user is not an Admin or a Manager, output the message:
-    You do not have sufficient privileges.
- --------------------------------------------------------------------- */
+    If the user is an Admin with a level greater than 55, output the message:
+        Welcome, Super Admin user.
+    If the user is an Admin with a level less than or equal to 55, output the message:
+        Welcome, Admin user.
+    If the user is a Manager with a level 20 or greater, output the message:
+        Contact an Admin for access.
+    If the user is a Manager with a level less than 20, output the message:
+        You do not have sufficient privileges.
+    If the user is not an Admin or a Manager, output the message:
+        You do not have sufficient privileges.
+*/
 
-/*
+/* ---------------- SOLUTION -------------------
 string permission = "Admin|Manager";
 int level = 55;
 
@@ -385,5 +385,78 @@ else
 {
     Console.WriteLine("You do not have sufficient privileges.");
 }
+*/
+
+
+/* -------- LESSON: CONTROL VARIABLE SCOPE AND LOGIC USING CODE BLOCKS ------------- */
+
+// Variable inside and outside a code block
+/*
+    bool flag = true;
+    int value = 0;
+
+    if (flag)
+    {
+        value = 10;
+        Console.WriteLine("Inside of code block: " + value);
+    }
+    Console.WriteLine("Outside of code block: " + value);
+*/
+
+// Remove code blocks from if statements
+/*
+    string name = "steve";
+
+    if (name == "bob")
+        Console.WriteLine("Found Bob");
+    else if (name == "steve")
+        Console.WriteLine("Found Steve");
+    else
+        Console.WriteLine("Found Chuck");
+*/
+
+// ------------------ CODE CHALLENGE -----------------------
+/*  UPDATE PROBLEMATIC CODE
+int[] numbers = { 4, 8, 15, 16, 23, 42 };
+
+foreach (int number in numbers)
+{
+    int total;
+
+    total += number;
+
+    if (number == 42)
+    {
+       bool found = true;
+
+    }
+
+}
+
+if (found) 
+{
+    Console.WriteLine("Set contains 42");
+
+}
+
+Console.WriteLine($"Total: {total}");
+*/
+
+/* ------------ SOLUTION ----------------
+    int[] numbers = { 4, 8, 15, 16, 23, 42 };
+    int total = 0;
+    bool found = false;
+
+    foreach (int number in numbers)
+    {
+        total += number;
+        if (number == 42)
+            found = true;
+    }
+
+    if (found) 
+        Console.WriteLine("Set contains 42");
+
+    Console.WriteLine($"Total: {total}");
 */
 
