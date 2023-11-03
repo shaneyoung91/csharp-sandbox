@@ -957,3 +957,87 @@ Console.WriteLine($"Product: {size} {color} {type}");
         Console.WriteLine(mySentence);
     }
 */
+
+
+/* ---- Value vs. Reference Types -------
+
+Variables of reference types store references to their data (objects), that is they point to data values stored somewhere else. 
+In comparison, variables of value types directly contain their data..
+
+Simple value types are a set of predefined types provided by C# as keywords. 
+These keywords are aliases (a nickname) for predefined types defined in the .NET Class Library. 
+For example, the C# keyword int is an alias of a value type defined in the .NET Class Library as System.Int32.
+
+Simple value types include many of the data types that you may have used already like char and bool. 
+There are also many integral and floating-point value types to represent a wide range of whole and fractional numbers.
+
+*/
+
+/* -------- Integral Types --------- 
+An integral type is a simple value type that represents whole numbers with no fraction (such as -1, 0, 1, 2, 3). The most popular in this category is the int data type.
+There are two subcategories of integral types: signed and unsigned integral types. 
+*/
+
+
+/* ------- Signed Integral Types ------
+// A signed type uses its bytes to represent an equal number of positive and negative numbers.
+
+Console.WriteLine("Signed integral types:");
+Console.WriteLine($"sbyte : {sbyte.MinValue} to {sbyte.MaxValue}");
+Console.WriteLine($"short : {short.MinValue} to {short.MaxValue}");
+Console.WriteLine($"int : {int.MinValue} to {int.MaxValue}");
+Console.WriteLine($"long : {long.MinValue} to {long.MaxValue}");
+*/
+
+/* ------- Unsigned Integral Types ------
+// An unsigned type uses its bytes to represent only positive numbers. 
+
+Console.WriteLine("");
+Console.WriteLine("Unsigned integral types:");
+Console.WriteLine($"byte : {byte.MinValue} to {byte.MaxValue}");
+Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+Console.WriteLine($"uint : {uint.MinValue} to {uint.MaxValue}");
+Console.WriteLine($"ulong : {ulong.MinValue} to {ulong.MaxValue}");
+*/
+
+/* ------- Floating Point Types ---------
+A floating point is a simple value type that represents numbers to the right of the decimal place.
+Evaluating floating-point types:
+    1 - Consider the digits of precision each type allows. Precision is the number of value places stored after the decimal point
+    2 - Consider the manner in which the values are stored and the impact on the accuracy of the value.
+        Float and double should only be used when an approximation is useful. Use decimal when you need a more precise answer
+
+Console.WriteLine("");
+Console.WriteLine("Floating point types:");
+Console.WriteLine($"float : {float.MinValue} to {float.MaxValue} (with ~6-9 digits of precision)");
+Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
+Console.WriteLine($"decimal : {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
+*/
+
+
+/* ------- Reference Types ----------
+Reference types include arrays, classes, and strings. Reference types are treated differently from value types regarding the way values
+are stored when the application is executing.
+
+A value type variable stores its values directly in an area of storage called the stack. The stack is memory allocated to the
+code that is currently running on the CPU. When the stack frame has finished executing, the values in the stack are removed.
+
+A reference type variable stores its values in a separate memory region called the heap. 
+The heap is a memory area that is shared across many applications running on the operating system at the same time.
+*/
+
+
+/* ------- Choosing the right data type -----
+int - most whole numbers
+decimal -  numbers representing money
+bool - true or false values
+string -  alphanumeric value
+
+byte - working with encoded data that comes from other computer systems or using diff character sets
+double - working with geometric or scientific purposes. used frequently when building games involving motion.
+System.DateTime - specific date and time value
+System.TimeSpan - span of years / months / days / hours / minutes / seconds / milliseconds
+*/
+
+
+
