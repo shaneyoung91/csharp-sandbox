@@ -1323,23 +1323,22 @@ Your code must produce the following output:
     C235
     G3003   - Error
 
+--------- SOLUTION ----------
+    string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+    string[] orders = orderStream.Split(",");
+    Array.Sort(orders);
+
+    foreach (string orderID in orders)
+    {
+        if (orderID.Length != 4)
+        {
+            Console.WriteLine($"{orderID}  - Error");
+        }
+        else
+        {
+            Console.WriteLine(orderID);
+        }
+    }
 
 */
-
-
-string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
-string[] orders = orderStream.Split(",");
-Array.Sort(orders);
-
-foreach (string orderID in orders)
-{
-    if (orderID.Length != 4)
-    {
-        Console.WriteLine($"{orderID}  - Error");
-    }
-    else
-    {
-        Console.WriteLine(orderID);
-    }
-}
 
