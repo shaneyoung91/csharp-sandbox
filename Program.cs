@@ -1169,7 +1169,7 @@ Implement the following business rules in your code logic:
         Message: ABCDEF
         Total: 68.3
 
------- SOLUTION #1 -------
+------ SOLUTION -------
 string[] values = { "12.3", "45", "ABC", "11", "DEF" };
 decimal total = 0m;
 string message = "";
@@ -1192,15 +1192,15 @@ Console.WriteLine($"Total: {total}");
 
 
 /* ----- CHALLENGE #2: OUTPUT MATH OPERATIONS AS SPECIFIC NUMBER TYPES  -----
-// Solve for result1: Divide value1 by value2, display the result as an int
-// Solve for result2: Divide value2 by value3, display the result as a decimal
-// Solve for result3: Divide value3 by value1, display the result as a float
-// The output should resemble:
-    // Divide value1 by value2, display the result as an int: 2
-    // Divide value2 by value3, display the result as a decimal: 1.4418604651162790697674418605
-    // Divide value3 by value1, display the result as a float: 0.3583333
+Solve for result1: Divide value1 by value2, display the result as an int
+Solve for result2: Divide value2 by value3, display the result as a decimal
+Solve for result3: Divide value3 by value1, display the result as a float
+The output should resemble:
+    Divide value1 by value2, display the result as an int: 2
+    Divide value2 by value3, display the result as a decimal: 1.4418604651162790697674418605
+    Divide value3 by value1, display the result as a float: 0.3583333
 
-// ------ SOLUTION #2 -------
+------ SOLUTION -------
 int value1 = 12;
 decimal value2 = 6.2m;
 float value3 = 4.3f;
@@ -1219,3 +1219,127 @@ Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {r
 float result3 = value3 / value1;
 Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
 */
+
+
+/* ----- LESSON: OPERATIONS ON ARRAYS USING HELPER METHODS -----
+
+Sort() and Reverse() Methods
+    string[] pallets = { "B14", "A11", "B12", "A13" };
+
+    Console.WriteLine("Sorted...");
+    Array.Sort(pallets);
+    foreach (var pallet in pallets)
+    {
+        Console.WriteLine($"-- {pallet}");
+    }
+
+    Console.WriteLine("");
+    Console.WriteLine("Reversed...");
+    Array.Reverse(pallets);
+    foreach (var pallet in pallets)
+    {
+        Console.WriteLine($"-- {pallet}");
+    }
+
+
+Clear() and Resize() Methods
+    string[] pallets = { "B14", "A11", "B12", "A13" };
+    Console.WriteLine("");
+
+    Array.Clear(pallets, 0, 2);
+    Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
+    foreach (var pallet in pallets)
+    {
+        Console.WriteLine($"-- {pallet}");
+    }
+
+    Console.WriteLine("");
+    Array.Resize(ref pallets, 6);
+    Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+
+    pallets[4] = "C01";
+    pallets[5] = "C02";
+
+    foreach (var pallet in pallets)
+    {
+        Console.WriteLine($"-- {pallet}");
+    }
+
+    Console.WriteLine("");
+    Array.Resize(ref pallets, 3);
+    Console.WriteLine($"Resizing 3 ... count: {pallets.Length}");
+    foreach (var pallet in pallets)
+    {
+        Console.WriteLine($"-- {pallet}");
+    }
+
+
+Split() and Join() Methods
+    string value = "abc123";
+    char[] valueArray = value.ToCharArray();
+    Array.Reverse(valueArray);
+    string result = String.Join(",", valueArray);
+    Console.WriteLine(result);
+
+    string[] items = result.Split(',');
+    foreach (string item in items)
+    {
+        Console.WriteLine(item);
+    }
+
+---------- CHALLENGE #1: REVERSE WORDS IN A SENTENCE -----------
+Reverse the letters of each word in place and display the result. You'll need to reverse just the letters in each word, 
+    but print the reversed word in its original position in the message.
+
+Your code must produce the following output:
+    "ehT kciuq nworb xof spmuj revo eht yzal god"
+
+--------- SOLUTION ---------
+    string pangram = "The quick brown fox jumps over the lazy dog";
+
+    char[] valueArray = pangram.ToCharArray();
+    Array.Reverse(valueArray);
+
+    string result = String.Join("", valueArray);
+
+    string[] words = result.Split(" ");
+    Array.Reverse(words);
+
+    string solution = String.Join(" ", words);
+    Console.WriteLine(solution);
+
+
+---------- CHALLENGE #2: PARSE A STRING OF ORDERS, SORT, AND TAG ERRORS -----------
+Parse the individual "Order IDs", and output the "OrderIDs" sorted and tagged as "Error" 
+    if they aren't exactly four characters in length.
+
+Your code must produce the following output:
+    A345
+    B123
+    B177
+    B179
+    C15     - Error
+    C234
+    C235
+    G3003   - Error
+
+
+*/
+
+
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+string[] orders = orderStream.Split(",");
+Array.Sort(orders);
+
+foreach (string orderID in orders)
+{
+    if (orderID.Length != 4)
+    {
+        Console.WriteLine($"{orderID}  - Error");
+    }
+    else
+    {
+        Console.WriteLine(orderID);
+    }
+}
+
