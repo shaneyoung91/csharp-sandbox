@@ -1339,6 +1339,100 @@ Your code must produce the following output:
             Console.WriteLine(orderID);
         }
     }
+*/
+
+
+/* ------ LESSON: FORMAT ALPHANUMERIC DATA FOR PRESENTATION ----------
+
+Composite formatting
+    - Uses numbers placeholders within a string. At run time, everything inside the braces is resolved
+    to a value that is also passed in based on their position.
+
+    string first = "Hello";
+    string second = "World";
+    string result = string.Format("{0} {1}!", first, second);  // Hello World!
+    Console.WriteLine(result);
+        // Uses built-in method Format() on the string data type keyword.
+        // The literal string "{0} {1}!" forms a template, parts of which are replaced at run time.
+        // The token {0} is replaced by the first argument after the string template (the value of the variable first).
+        // The token {1} is replaced by the second argument after the string template (the value of the variable second).
+
+    string first = "Hello";
+    string second = "World";
+    Console.WriteLine("{1} {0}!", first, second);  // World Hello!
+    Console.WriteLine("{0} {0} {0}!", first, second);  // Hello Hello Hello!
+
+
+String Interpolation
+    - A technique that simplifies composite formatting.
+    - Instead of using a numbered token and including the literal value or variable name in a list of arguments, you can just use
+    the variable name inside of the curly braces.
+    - Must be prefixed with "$".
+
+    string first = "Hello";
+    string second = "World";
+    Console.WriteLine($"{first} {second}!"); // Hello World!
+    Console.WriteLine($"{second} {first}!"); // World Hello!
+    Console.WriteLine($"{first} {first} {first}!"); // Hello Hello Hello!
+
+
+Formatting Currency
+    - Use " :C " currency format specifier to present variables as currency.
+
+    decimal price = 123.45m;
+    int discount = 50;
+    Console.WriteLine($"Price: {price:C} (Save {discount:C})"); // Price: $123.45 (Save $50.00)
+        // Adding " :C " formats the number as currency regardless of whether you use int or decimal.
+
+
+Formatting Numbers
+    - You may want to format numbers for readability by including commas to delineate thousands, millions, billions, and so on.
+    - The " N " numeric format specifier makes numbers more readable.
+
+    decimal measurement = 123456.78912m;
+    Console.WriteLine($"Measurement: {measurement:N} units"); // Measurement: 123,456.789 units
+        // Be default, it displays three digits after the decimal point
+        // You can display more/less precision, by adding a number after the specifier (N2 / N4)
+
+
+Formatting Percentages
+    - Use the " P " format specifier to format percentages. Add a number afterwards to control the number of values displayed after the decimal point.
+
+    decimal tax = .36785m;
+    Console.WriteLine($"Tax rate: {tax:P2}"); // Tax rate: 36.79%
+
+
+Combining Formatting Approaches
+    - String variables can store strings created using formatting techniques.
+
+    decimal price = 67.55m;
+    decimal salePrice = 59.99m;
+    string yourDiscount = String.Format("You saved {0:C2} off the regular {1:C2} price. ", (price - salePrice), price);
+    yourDiscount += $"A discount of {((price - salePrice)/price):P2}!"; // You can combine multiple formatted strings
+    Console.WriteLine(yourDiscount); // You saved $7.56 off the regular $67.55 price. A discount of 11.19%!
+
+
+EXERCISE - String Interpolation
+    - You need to create the code to print a receipt for the customer purchasing shares of an investment product. 
+    - The shares are purchased automatically at the end of the year based on a series of payroll deductions, so the number of shares purchased usually contains a decimal amount. 
+    - To print the receipt, you would likely need to combine data of different types, including fractional values, currency, and percentages in precise ways.
+
+    int invoiceNumber = 1201;
+    decimal productShares = 25.4568m;
+    decimal subtotal = 2750.00m;
+    decimal taxPercentage = .15825m;
+    decimal total = 3185.19m;
+
+    Console.WriteLine($"Invoice Number: {invoiceNumber}");
+    Console.WriteLine($"    Shares: {productShares:N3} Product");
+    Console.WriteLine($"      Sub Total: {subtotal:C}");
+    Console.WriteLine($"            Tax: {taxPercentage:P2}");
+    Console.WriteLine($"      Total Billed: {total:C}");
+
+
+EXERCISE - Padding and Alignment
 
 */
+
+
 
