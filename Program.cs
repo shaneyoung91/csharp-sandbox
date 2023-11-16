@@ -1512,3 +1512,187 @@ EXERCISE - Padding and Alignment
     comparisonMessage += String.Format("{0:C}", newProfit).PadRight(20);
 */
 
+
+
+/* ------ LESSON: MODIFY CONTENT OF STRINGS ----------
+
+EXERCISE - Use the string's IndexOf() and Substring() helper methods
+    - Use the IndexOf() method to locate the position of one or more characters string inside a larger string.
+    - Use the Substring() method to return the part of the larger string that follows the character positions you specify.
+    - Also use an overloaded version of the Substring() method to set the length of characters to return after a specified position in a string.
+
+
+    string message = "Find what is (inside the parentheses)";
+    int openingPosition = message.IndexOf("(");
+    int closingPosition = message.IndexOf(")");
+    openingPosition += 1;
+    int length = closingPosition - openingPosition;
+    Console.WriteLine(message.Substring(openingPosition, length)); // inside the parentheses
+
+
+    string message2 = "What is the value <span>between the tags</span>?";
+    const string openSpan = "<span>";
+    const string closeSpan = "</span>";
+    int openingPosition2 = message2.IndexOf(openSpan);
+    int closingPosition2 = message2.IndexOf(closeSpan);
+    openingPosition2 +=  openSpan.Length;
+    int length2 = closingPosition2 - openingPosition2;
+    Console.WriteLine(message2.Substring(openingPosition2, length2)); //  between the tags
+
+
+EXERCISE - Use the string's IndexOfAny() and LastIndexOf() helper methods
+    - Use the IndexOfAny() method to find the first location of any of the string from selected array.
+    - Use LastIndexOf() to find the final location of a string within another string
+
+
+    string message = "(what if) I am (only interested) in the last (set of parentheses)?";
+    int openingPosition = message.LastIndexOf('(');
+    openingPosition += 1;
+    int closingPosition =  message.LastIndexOf(')');
+    int length = closingPosition - openingPosition;
+    Console.WriteLine(message.Substring(openingPosition, length)); // set of parentheses
+
+
+    // Retrieve all instances of substrings inside parentheses
+    string message = "(What if) there are (more than) one (set of parentheses)?";
+    while (true)
+    {
+        int openingPosition = message.IndexOf('(');
+        if (openingPosition == -1) break;
+
+        openingPosition += 1;
+        int closingPosition = message.IndexOf(')');
+        int length = closingPosition - openingPosition;
+        Console.WriteLine(message.Substring(openingPosition, length)); // What if - more than - set of parentheses
+
+        // Note the overload of the Substring to return only the remaining
+        // unprocessed message:
+        message = message.Substring(closingPosition + 1);
+    }
+
+    // Work with different types of symbol sets
+    string message = "(What if) I have [different symbols] but every {open symbol} needs a [matching closing symbol]?";
+
+    // The IndexOfAny() helper method requires a char array of characters. 
+    // You want to look for:
+
+    char[] openSymbols = { '[', '{', '(' };
+
+    // You'll use a slightly different technique for iterating through 
+    // the characters in the string. This time, use the closing 
+    // position of the previous iteration as the starting index for the 
+    //next open symbol. So, you need to initialize the closingPosition 
+    // variable to zero:
+
+    int closingPosition = 0;
+    while (true)
+    {
+        int openingPosition = message.IndexOfAny(openSymbols, closingPosition);
+        if (openingPosition == -1) break;
+        string currentSymbol = message.Substring(openingPosition, 1);
+        // Now find the matching closing symbol
+        char matchingSymbol = ' ';
+        switch (currentSymbol)
+        {
+            case "[":
+                matchingSymbol = ']';
+                break;
+            case "{":
+                matchingSymbol = '}';
+                break;
+            case "(":
+                matchingSymbol = ')';
+                break;
+        }
+
+        // To find the closingPosition, use an overload of the IndexOf method to specify 
+        // that the search for the matchingSymbol should start at the openingPosition in the string. 
+        openingPosition += 1;
+        closingPosition = message.IndexOf(matchingSymbol, openingPosition);
+
+        // Finally, use the techniques you've already learned to display the sub-string:
+        int length = closingPosition - openingPosition;
+        Console.WriteLine(message.Substring(openingPosition, length));
+    }
+
+    // LastIndexOf() returns the last position of a character or string inside of another string.
+    // IndexOfAny() returns the first position of an array of char that occurs inside of another string.
+
+
+EXERCISE - Use the Remove() and Replace() methods
+    - Remove characters from a string using the Remove() method and replace characters using the Replace() method.
+
+    // Remove() Method
+    string data = "12345John Smith          5000  3  ";
+    string updatedData = data.Remove(5, 20);
+    Console.WriteLine(updatedData);
+
+    // Replace() Method
+    string message = "This--is--ex-amp-le--da-ta";
+    message = message.Replace("--", " ");
+    message = message.Replace("-", "");
+    Console.WriteLine(message);
+
+    // The Remove() method works like the Substring() method, except that it deletes the specified characters in the string.
+    // The Replace() method swaps all instances of a string with a new string.
+
+
+---------- CHALLENGE: EXTRACT, REPLACE, AND REMOVE DATA FROM INPUT STRING -----------
+    - Set the quantity variable to the value by extracting the text from between the <span> and </span> tags.
+    - Set the output variable to the value of input, then remove the <div> and </div> tags.
+    - Replace the HTML character ™ (&trade;) with ® (&reg) in the output variable.
+    - Expected Output:
+        Quantity: 5000
+        Output: <h2>Widgets &reg;</h2><span>5000</span>
+
+
+--------- SOLUTION ----------
+    const string input = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
+
+    string quantity = "";
+    string output = "";
+
+    // Your work here
+    const string openSpanTag = "<span>";
+    const string closeSpanTag = "</span>";
+    int openSpan = input.IndexOf(openSpanTag);
+    int closeSpan = input.IndexOf(closeSpanTag);
+    openSpan += openSpanTag.Length;
+    int spanLength = closeSpan - openSpan;
+    quantity = "Quantity: ";
+    quantity += input.Substring(openSpan, spanLength);
+    Console.WriteLine(quantity);
+
+    const string openDivTag = "<div>";
+    const string closeDivTag = "</div>";
+    int closeDiv = closeDivTag.Length;
+    output = "Output: ";
+    output += input.Replace(openDivTag, "").Replace("&trade", "&reg").Replace(closeDivTag, "");
+    Console.WriteLine(output);
+
+    ----- ALTERNATE SOLUTION -------
+    // Extract the quantity
+    int quantityStart = input.IndexOf("<span>");
+    int quantityEnd = input.IndexOf("</span>");
+    quantityStart += "<span>".Length; // Added length of the tag so index moves to end of the tag
+    int quantityLength = quantityEnd - quantityStart;
+    quantity = input.Substring(quantityStart, quantityLength); //Extracts from end of open tag to beginning of close tag
+    quantity = $"Quantity: {quantity}";
+
+    // Set output to input, replacing the trademark symbol with the registered trademark symbol
+    output = input.Replace("&trade;", "&reg;");
+
+    // Remove the opening <div> tag
+    int divStart = input.IndexOf("<div>");
+    int divLength = "<div>".Length;
+    output = output.Remove(divStart, divLength);
+
+    // Remove the closing <div> tag
+    int divCloseStart = output.IndexOf("</div>");
+    int divCloseLength = "</div>".Length;
+    output = output.Remove(divCloseStart, divCloseLength);
+    output = $"Output: {output}";
+
+*/
+
+
